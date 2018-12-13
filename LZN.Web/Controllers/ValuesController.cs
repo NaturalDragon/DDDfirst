@@ -23,10 +23,11 @@ namespace LZN.Web.Controllers
             _personService = personService;
           
         }
-        public async Task<int> Get()
+        public async Task<object> Get()
         {
-            
-            return  await _personService.AddPerson(new Core.Model.Person() { Id = Guid.NewGuid(), Name = $"wo{DateTime.Now.ToString()}" });
+
+            return await _personService.GetAll();
+            //return  await _personService.AddPerson(new Core.Model.Person() { Id = Guid.NewGuid(), Name = $"wo{DateTime.Now.ToString()}" });
         
         }
 

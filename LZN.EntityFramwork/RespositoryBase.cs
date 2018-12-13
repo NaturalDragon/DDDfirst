@@ -15,28 +15,32 @@ namespace LZN.EntityFramwork
        where TEntity : class,IEntity<Guid>
     {
       
-        public RespositoryBase(UnitOfWorkDbContext dbDbContext) : base(dbDbContext)
+        public RespositoryBase(IUnitOfWorkDbContext dbDbContext) : base(dbDbContext)
         {
         }
     }
 
 
     public abstract class RespositoryBase<TEntity, TPrimaryKey> :
-         IRespositoryBase<TEntity, TPrimaryKey>, IRespositoryWithDbContext
+        LZN.Core.Data.IUnitOfWork,
+         IRespositoryBase<TEntity, TPrimaryKey>
           where TEntity : class, IEntity<TPrimaryKey>
     {
         private readonly DbSet<TEntity> _dbSet;
 
         private readonly UnitOfWorkDbContext _dbContext;
 
-        public DbContext GetDbContext()
+        //public DbContext GetDbContext()
+        //{
+        //    return _dbContext;
+        //}
+        public async Task<int> SaveChangesAsync()
         {
-            return _dbContext;
+           return await _dbContext.SaveChangesAsync();
         }
 
 
-
-        public RespositoryBase(UnitOfWorkDbContext dbContext)
+        public RespositoryBase(IUnitOfWorkDbContext dbContext)
         {
 
             _dbContext = (UnitOfWorkDbContext)dbContext;
@@ -56,6 +60,6 @@ namespace LZN.EntityFramwork
             await _dbSet.AddAsync(entity);
         }
 
-
+     
     }
 }

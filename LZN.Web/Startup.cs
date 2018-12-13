@@ -35,7 +35,8 @@ namespace LZN.Web
 
             });
             //注册服务进 IServiceCollection
-            services.AddScoped<IUnitOfWork, UnitOfWork<UnitOfWorkDbContext>>();
+            //  services.AddScoped<IUnitOfWork, UnitOfWork<UnitOfWorkDbContext>>();
+            services.AddScoped<IUnitOfWorkDbContext, UnitOfWorkDbContext>();
             services.AddMvc();
             ContainerBuilder builder = new ContainerBuilder();
             //将services中的服务填充到Autofac中.

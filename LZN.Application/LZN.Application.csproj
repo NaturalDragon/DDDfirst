@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LZN.Core\LZN.Core.csproj" />
+    <ProjectReference Include="..\LZN.Data\LZN.Data.csproj" />
   </ItemGroup>
 
 </Project>

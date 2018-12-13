@@ -1,4 +1,5 @@
-﻿using LZN.Core.Model;
+﻿using LZN.Application.Dtos.Person;
+using LZN.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,7 @@ namespace LZN.Application.PersonApp
 
         bool Login(Person person);
 
-        Task<int> AddPerson(Person person);
+        Task<IEnumerable<PersonQueryDto>> GetAll();
+        Task<int> AddPerson(PersonRequestDto person);
     }
 }

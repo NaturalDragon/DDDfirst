@@ -10,5 +10,7 @@ namespace LZN.Application.Dtos.Person
 
 
         public string Name { set; get; }
+
+        public DateTime CreateDate { set; get; }
     }
 }

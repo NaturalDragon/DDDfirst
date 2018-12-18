@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using LZN.Core.Data;
 using LZN.EntityFramwork;
 using LZN.EntityFramwork.Data;
@@ -34,6 +35,7 @@ namespace LZN.Web
             {
 
             });
+            services.AddAutoMapper();
             //注册服务进 IServiceCollection
             //  services.AddScoped<IUnitOfWork, UnitOfWork<UnitOfWorkDbContext>>();
             services.AddScoped<IUnitOfWorkDbContext, UnitOfWorkDbContext>();

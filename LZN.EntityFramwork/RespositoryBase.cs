@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace LZN.EntityFramwork
 {
     public abstract class RespositoryBase<TEntity>
-       : RespositoryBase<TEntity,Guid>, IRespositoryBase<TEntity,Guid>
-       where TEntity : class,IEntity<Guid>
+       : RespositoryBase<TEntity, string>, IRespositoryBase<TEntity, string>
+       where TEntity : class,IEntity<string>
     {
       
         public RespositoryBase(IUnitOfWorkDbContext dbDbContext) : base(dbDbContext)

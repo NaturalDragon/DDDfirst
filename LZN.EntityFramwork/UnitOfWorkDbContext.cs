@@ -10,7 +10,7 @@ namespace LZN.EntityFramwork
     {
 
 
-        public DbSet<LZN.Core.Model.Person> people { get; set; }
+        public DbSet<LZN.Core.Model.Person> People { get; set; }
 
 
        

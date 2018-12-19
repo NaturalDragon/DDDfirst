@@ -36,10 +36,10 @@ namespace LZN.Application.PersonApp
 
         public async Task<IEnumerable<PersonQueryDto>> GetAll()
         {
-            //var list= await _personRespository.Entities.Where(p => p.Name != "").ToListAsync();
+            var list = await _personRespository.Entities.Where(p => p.Name != "").ToListAsync();
 
-            //return list.MapToList<Person, PersonQueryDto>();
-            return null;
+            return list.MapToList<Person, PersonQueryDto>();
+        
         }
       
         public bool Login(Person person)

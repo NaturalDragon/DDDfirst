@@ -4,9 +4,9 @@ using System.Text;
 
 namespace LZN.Core.Model
 {
-    public class Person : IEntity<Guid>
+    public class Person : IEntity<string>
     {
-        public Guid Id { set; get; }
+        public  string Id { set; get; }
 
 
         public string Name { set; get; }

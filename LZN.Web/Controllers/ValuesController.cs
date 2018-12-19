@@ -25,9 +25,10 @@ namespace LZN.Web.Controllers
         }
         public async Task<object> Get()
         {
+            await _personService.AddPerson(new LZN.Application.Dtos.Person.PersonRequestDto { Id = Guid.NewGuid().ToString(), Name = $"wo{DateTime.Now.ToString()}", CreateDate = DateTime.Now });
 
-         //   return await _personService.GetAll();
-            return  await _personService.AddPerson(new LZN.Application.Dtos.Person.PersonRequestDto { Id = Guid.NewGuid(), Name = $"wo{DateTime.Now.ToString()}",CreateDate=DateTime.Now });
+            return await _personService.GetAll();
+         //   return 
         
         }
 

@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using LZN.Core.Model;
 using System.Linq;
 using LZN.Core.IRespository;
 using System.Threading.Tasks;
 using LZN.Core.Data;
 using LZN.Application.Dtos.Person;
-using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using LZN.Data.Ext;
+using Microsoft.EntityFrameworkCore;
+using LZN.Core.Event;
+
 namespace LZN.Application.PersonApp
 {
     public class PersonService : IPersonService
@@ -31,7 +31,13 @@ namespace LZN.Application.PersonApp
 
             var person = _mapper.Map<PersonRequestDto, Person>(personRequest);
             await _personRespository.Add(person);
-          return  await _unitOfWork.SaveChangesAsync();
+
+          
+
+           var res= await _unitOfWork.SaveChangesAsync();
+            EventBus.Instance.Subscribe<PersonGeneratorEvent>(new PersonAddedEventHandler_SendEmail());
+            EventBus.Instance.Publish(new PersonGeneratorEvent() { PersonId = person.Id });
+            return res;
         }
 
         public async Task<IEnumerable<PersonQueryDto>> GetAll()

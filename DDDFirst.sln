@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{C0259B25-391F-4B62-9947-A8091561E3B9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Application", "03.Application", "{C0259B25-391F-4B62-9947-A8091561E3B9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{C2A2B52A-EE1A-4512-9AF0-5A9495BB0ED5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Domain", "02.Domain", "{C2A2B52A-EE1A-4512-9AF0-5A9495BB0ED5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{FF8D863F-C14F-4B80-BA2D-66A68AF2A131}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Infrastructure", "01.Infrastructure", "{FF8D863F-C14F-4B80-BA2D-66A68AF2A131}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{8BE45F2A-F268-4803-B49D-62E6F60D40FF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.Presentation", "04.Presentation", "{8BE45F2A-F268-4803-B49D-62E6F60D40FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LZN.Application", "LZN.Application\LZN.Application.csproj", "{71E14935-54CB-45EB-916F-FE17E5E9D27A}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LZN.EntityFramwork", "LZN.E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LZN.Web", "LZN.Web\LZN.Web.csproj", "{0B2CC844-B66A-436F-AEA8-C29B993F772E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LZN.Data", "LZN.Data\LZN.Data.csproj", "{A972A060-DCF6-42D8-8EE5-D815F7DB8C4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LZN.Data", "LZN.Data\LZN.Data.csproj", "{A972A060-DCF6-42D8-8EE5-D815F7DB8C4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

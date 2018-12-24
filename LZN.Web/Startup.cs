@@ -35,6 +35,25 @@ namespace LZN.Web
             {
 
             });
+
+              
+            services.AddCap(x =>
+            {
+               
+                x.UseEntityFramework<UnitOfWorkDbContext>();
+                x.UseRabbitMQ("112.74.59.197");
+
+                x.UseDashboard();
+                x.UseDiscovery(d =>
+                {
+                    d.DiscoveryServerHostName = "112.74.59.197";
+                    d.DiscoveryServerPort = 8500;
+                    d.CurrentNodeHostName = "112.74.59.197";
+                    d.CurrentNodePort = 5800;
+                    d.NodeId = 1;
+                    d.NodeName = "CAP No.1 Node";
+                });
+                ;            });
             services.AddAutoMapper();
             //注册服务进 IServiceCollection
             //  services.AddScoped<IUnitOfWork, UnitOfWork<UnitOfWorkDbContext>>();

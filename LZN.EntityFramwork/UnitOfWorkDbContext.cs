@@ -1,4 +1,5 @@
 ﻿
+using LZN.EntityFramwork.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace LZN.EntityFramwork
     {
 
 
-        public DbSet<LZN.Core.Model.Person> People { get; set; }
+        //public DbSet<LZN.Core.Model.Person> People { get; set; }
 
 
        
@@ -23,6 +24,12 @@ namespace LZN.EntityFramwork
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL("server=112.74.59.197;uid=root;pwd=LZN520cy&xnn;database=Test;");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.AddEntityConfigurationsFromAssembly(GetType().Assembly);
         }
     }
 }

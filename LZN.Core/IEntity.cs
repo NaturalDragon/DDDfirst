@@ -13,5 +13,9 @@ namespace LZN.Core
    public interface IEntity<TPrimaryKey>
     {
         TPrimaryKey Id { set; get; }
+
+        int IsDelete { set; get; }
+
+        DateTime CreateDate { set; get; }
     }
 }

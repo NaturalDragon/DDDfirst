@@ -5,26 +5,17 @@ using System.Text;
 
 namespace LZN.Core.Model
 {
-    public class Person : IEntity<string>
+    public class Role : IEntity<string>
     {
         [Key]
-        public  string Id { set; get; }
-
-
-        public string RoleId { set; get; }
+        public string Id { set;get; }
 
         [Required]
         [StringLength(64)]
         public string Name { set; get; }
 
-
-        [StringLength(16)]
-        public string PhoneCode { set; get; }
-         
-
         public int IsDelete { set; get; }
 
         public DateTime CreateDate { set; get; }
-       
     }
 }

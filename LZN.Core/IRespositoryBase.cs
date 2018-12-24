@@ -19,5 +19,9 @@ namespace LZN.Core
 
         IQueryable<TEntity> Entities { get; }
         Task Add(TEntity entity, bool isSave = true);
+
+      //  Task<TEntity> GetEntityById(string Id);
+
+
     }
 }

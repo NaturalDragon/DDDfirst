@@ -28,12 +28,17 @@ namespace LZN.EntityFramwork
     {
         private readonly DbSet<TEntity> _dbSet;
 
-        private readonly UnitOfWorkDbContext _dbContext;
+        protected readonly UnitOfWorkDbContext _dbContext;
 
         //public DbContext GetDbContext()
         //{
         //    return _dbContext;
         //}
+
+        public DbContext GetDbContext()
+        {
+            return _dbContext;
+        }
         public async Task<int> SaveChangesAsync()
         {
            return await _dbContext.SaveChangesAsync();

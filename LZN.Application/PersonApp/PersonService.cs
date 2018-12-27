@@ -7,8 +7,10 @@ using LZN.Core.Data;
 using LZN.Application.Dtos.Person;
 using AutoMapper;
 using LZN.Data.Ext;
-using Microsoft.EntityFrameworkCore;
 using LZN.Core.Event;
+using DotNetCore.CAP;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace LZN.Application.PersonApp
 {
@@ -17,27 +19,37 @@ namespace LZN.Application.PersonApp
         public IPersonRespository _personRespository;
         public IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ICapPublisher _capBus;
         public PersonService(IPersonRespository personRespository, IUnitOfWork unitOfWork,
-            IMapper mapper)
+            IMapper mapper, ICapPublisher capPublisher)
         {
             _personRespository = personRespository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _capBus = capPublisher;
         }
 
         public async Task<int> AddPerson(Dtos.Person.PersonRequestDto personRequest)
         {
-            
+           
 
             var person = _mapper.Map<PersonRequestDto, Person>(personRequest);
-            await _personRespository.Add(person);
+            using (var trans = _unitOfWork.GetDbContext().Database.BeginTransaction(_capBus,autoCommit:true))
+            {
+                await _personRespository.Add(person);
+                var res= await _unitOfWork.SaveChangesAsync();
+                await _capBus.PublishAsync("xxx.services.show.time", DateTime.Now);
+               
+               // trans.Commit();
+                return res;
+            }
 
-          
 
-           var res= await _unitOfWork.SaveChangesAsync();
-            EventBus.Instance.Subscribe<PersonGeneratorEvent>(new PersonAddedEventHandler_SendEmail());
-            EventBus.Instance.Publish(new PersonGeneratorEvent() { PersonId = person.Id });
-            return res;
+            //    await _personRespository.Add(person);
+            //var res= await _unitOfWork.SaveChangesAsync();
+            // EventBus.Instance.Subscribe<PersonGeneratorEvent>(new PersonAddedEventHandler_SendEmail());
+            //EventBus.Instance.Publish(new PersonGeneratorEvent() { PersonId = person.Id });
+           
         }
 
         public async Task<IEnumerable<PersonQueryDto>> GetAll()

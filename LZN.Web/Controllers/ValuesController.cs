@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Autofac;
 using DotNetCore.CAP;
 using LZN.Application.PersonApp;
+using LZN.EntityFramwork;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -31,18 +32,23 @@ namespace LZN.Web.Controllers
         [HttpGet("TestCap")]
         public async Task<object> TestCap()
         {
-            await  _capBus.PublishAsync("xxx.services.show.time", DateTime.Now);
+
+            
+
+
+            await _capBus.PublishAsync("xxx.services.show.time", DateTime.Now);
             return "o";
         }
         [CapSubscribe("xxx.services.show.time")]
         public void ShowTime(DateTime now)
         {
-            Console.WriteLine($"时间：{now}");
+            Console.WriteLine($"时间时间时间时间时间时间时间：{now}");
         }
-        public async Task<object> Get()
+        [HttpGet("Test")]
+        public async Task<object> Test()
         {
             await _personService.AddPerson(new LZN.Application.Dtos.Person.PersonRequestDto
-            { Id = Guid.NewGuid().ToString(), Name = $"wo{DateTime.Now.ToString()}", CreateDate = DateTime.Now });
+            { Id = Guid.NewGuid().ToString(), Name = $"wo{DateTime.Now.ToString()}", CreateDate = DateTime.Now ,RoleId="2" });
 
             var result = await _personService.GetAll();
             return result.Count();

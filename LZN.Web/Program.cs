@@ -17,8 +17,22 @@ namespace LZN.Web
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+
+            //var config = new ConfigurationBuilder()
+            //.AddCommandLine(args)
+            //.Build();
+            string ip = "127.0.0.1";// config["ip"];
+            int port = 5001;//int.Parse(config["port"]);
+            return  WebHost.CreateDefaultBuilder(args)
+              //  .UseUrls($"http://{ip}:{port}")
+             //.UseKestrel(option =>
+             //{
+             //    option.Listen(System.Net.IPAddress.Parse("127.0.0.1"), 5000);
+             //})
+              .UseStartup<Startup>();
+        }
+          
     }
 }

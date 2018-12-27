@@ -94,6 +94,7 @@ namespace LZN.Web
 
             app.UseHttpsRedirection();
             app.UseMvc();
+          
           //  appLifetime.ApplicationStopped.Register(() => { AutofacContainer.Dispose(); });
         }
     }

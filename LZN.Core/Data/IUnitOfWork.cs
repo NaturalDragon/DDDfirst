@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace LZN.Core.Data
 
         Task<int> SaveChangesAsync();
 
+
+        DbContext GetDbContext();
        
     }
 }

@@ -6,5 +6,6 @@ namespace LZN.Core.IRespository
 {
    public interface IRoleRespository: IRespositoryBase<Model.Role>
     {
+
     }
 }

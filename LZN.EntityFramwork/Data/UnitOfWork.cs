@@ -16,6 +16,11 @@ namespace LZN.EntityFramwork.Data
             _dbContext = dbContext??throw new ArgumentNullException(nameof(dbContext));
         }
 
+        public DbContext GetDbContext()
+        {
+            return _dbContext;
+        }
+
         public async Task<int> SaveChangesAsync()
         {
             return  await _dbContext.SaveChangesAsync();
